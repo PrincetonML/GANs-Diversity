@@ -550,8 +550,8 @@ class DCGAN(object):
 
       for idx in range(topK):
         neg_dist, img1, img2 = hq.heappop(queue)
-        scipy.misc.imsave('./faces_samples_%d/pair#%d_%f_%d.png'%(config.df_dim, idx, -1*neg_dist, 1), (img1+1.)/2)
-        scipy.misc.imsave('./faces_samples_%d/pair#%d_%f_%d.png'%(config.df_dim, idx, -1*neg_dist, 2), (img2+1.)/2)
+        scipy.misc.imsave(config.sample_dir + '/pair#%d_%f_%d.png'%(idx, -1*neg_dist, 1), (img1+1.)/2)
+        scipy.misc.imsave(config.sample_dir + '/pair#%d_%f_%d.png'%(idx, -1*neg_dist, 2), (img2+1.)/2)
 
   def load(self, checkpoint_dir):
     import re
