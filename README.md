@@ -47,3 +47,12 @@ for idx in range(topK):
 	scipy.misc.imsave(config.sample_dir + '/pair#%d_%f_%d.png'%(idx, -1*neg_dist, 1), (img1+1.)/2)
 	scipy.misc.imsave(config.sample_dir + '/pair#%d_%f_%d.png'%(idx, -1*neg_dist, 2), (img2+1.)/2)
 ```
+
+To estimate the diversity of a GAN model:
+- Sample a batch of size ```s``` from the generator
+- Use the code above to select topK (say 20) potential collisions
+- Visually inspect the flagged pairs and check for duplicates
+- Repeat
+
+If this test reveals that samples of size $s$ have duplicate images with good probability (say >= 50%), 
+then suspect that the distribution has support size about $s^2$.
